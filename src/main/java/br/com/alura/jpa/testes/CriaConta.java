@@ -19,6 +19,7 @@ public class CriaConta {
 		conta.setNumero(1234);
 		conta.setAgencia(4321);
 		
+		/*A transação é um escopo de tarefas que serão executadas de uma forma única ou atómica.*/
 		em.getTransaction().begin();
 		
 		em.persist(conta);

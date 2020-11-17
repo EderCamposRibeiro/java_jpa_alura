@@ -17,6 +17,16 @@ public class Conta {
 	private Integer numero;
 
 	private String titular;
+	
+	private Double saldo;
+	
+	public Double getSaldo() {
+		return saldo;
+	}
+	
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
+	}
 
 	public Long getId() {
 		return id;
