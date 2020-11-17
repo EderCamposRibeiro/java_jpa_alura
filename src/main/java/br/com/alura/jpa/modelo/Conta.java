@@ -3,6 +3,7 @@ package br.com.alura.jpa.modelo;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class Conta {
 	
 	/* Sem o atributo "mappedBy" o JPA irá criar uma nova tabela de relacionamento. Esse atributo apontando para "conta" garante um
 	 * único relacionamento bidimensional*/
-	@OneToMany(mappedBy = "conta")
+	@OneToMany(mappedBy = "conta", fetch = FetchType.EAGER)
 	private List<Movimentacao> movimentacoes;
 	
 	public Double getSaldo() {
