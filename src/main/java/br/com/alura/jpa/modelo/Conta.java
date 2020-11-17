@@ -1,9 +1,12 @@
 package br.com.alura.jpa.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Conta {
@@ -19,6 +22,11 @@ public class Conta {
 	private String titular;
 	
 	private Double saldo;
+	
+	/* Sem o atributo "mappedBy" o JPA irá criar uma nova tabela de relacionamento. Esse atributo apontando para "conta" garante um
+	 * único relacionamento bidimensional*/
+	@OneToMany(mappedBy = "conta")
+	private List<Movimentacao> movimentacoes;
 	
 	public Double getSaldo() {
 		return saldo;
@@ -58,6 +66,10 @@ public class Conta {
 
 	public void setTitular(String titular) {
 		this.titular = titular;
+	}
+
+	public List<Movimentacao> getMovimentacoes() {
+		return movimentacoes;
 	}
 
 }

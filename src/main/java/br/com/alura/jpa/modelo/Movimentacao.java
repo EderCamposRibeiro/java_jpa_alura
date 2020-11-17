@@ -55,6 +55,9 @@ public class Movimentacao {
 	/* Devemos criar um relacionamento Muitos para Um entre a própria Conta e Movimentação*/
 	@ManyToOne       
 	private Conta conta;
+	/* Esse atributo causa a criação da chave estrangeira no banco de dados.
+	 * O atributo Movimentacoes na classe conta é o lado fraco (indicado pelo
+	 * "mappedBy") e não causa nenhuma alteração no banco de dados.*/
 	
 	/* A cardinalidade deste relacionamento é "@OneToMany", pois haverá uma "Movimentação" com muitas categorias. Porém, como também podem ser
 	 * associadas a mais de uma movimentação - afinal é possível que haja mais de uma viagem de negócios paga com a mesma conta por exemplo-,
