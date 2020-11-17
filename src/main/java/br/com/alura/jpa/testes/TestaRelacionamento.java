@@ -25,7 +25,7 @@ public class TestaRelacionamento {
 		Movimentacao movimentacao = new Movimentacao();
 		
 		movimentacao.setData(LocalDateTime.now());
-		movimentacao.setDescrição("Churrascaria");
+		movimentacao.setDescricao("Churrascaria");
 		movimentacao.setValor(new BigDecimal(200.0));
 		movimentacao.setTipoMovimentacao(TipoMovimentacao.ENTRADA);
 		movimentacao.setConta(conta);

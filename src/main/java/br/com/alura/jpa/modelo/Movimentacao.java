@@ -2,6 +2,7 @@ package br.com.alura.jpa.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -49,10 +51,24 @@ public class Movimentacao {
 	 */
 	private BigDecimal valor;
 	
-	
+	//-> Anotação de Cardinalidade   
 	/* Devemos criar um relacionamento Muitos para Um entre a própria Conta e Movimentação*/
-	@ManyToOne  //-> Anotação de Cardinalidade        
+	@ManyToOne       
 	private Conta conta;
+	
+	/* A cardinalidade deste relacionamento é "@OneToMany", pois haverá uma "Movimentação" com muitas categorias. Porém, como também podem ser
+	 * associadas a mais de uma movimentação - afinal é possível que haja mais de uma viagem de negócios paga com a mesma conta por exemplo-,
+	 * precisaremos que as "categorias" sejam reutilizáveis utilizando a anotação "@ManyToMany"*/
+	@ManyToMany
+	private List<Categoria> categorias;
+	
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
 	
 	public Conta getConta() {
 		return conta;
@@ -98,7 +114,7 @@ public class Movimentacao {
 		return descricao;
 	}
 
-	public void setDescrição(String descricao) {
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
